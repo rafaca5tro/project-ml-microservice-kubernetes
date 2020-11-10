@@ -6,7 +6,7 @@
 # Step 1:
 # Create dockerpath
 # dockerpath=<your docker ID/path>
-dockerpath="rcgonzsv/mlapi"
+dockerpath="vonbolan/mlapi"
 
 # Step 2:  
 # Authenticate & tag
