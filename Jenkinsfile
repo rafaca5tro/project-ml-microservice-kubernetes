@@ -28,9 +28,7 @@ wget https://github.com/hadolint/hadolint/releases/download/v1.16.3/hadolint-Lin
 
     stage('Lint') {
       steps {
-        sh '''#!/bin/bash
-. venv/bin/activate
-make lint'''
+        sh 'docker run --rm -i hadolint/hadolint < Dockerfile'
       }
     }
 
