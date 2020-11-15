@@ -8,7 +8,8 @@ pipeline {
   stages {
     stage('Requirements') {
       steps {
-        sh 'pip3 install -r requirements.txt'
+        sh '''#!/bin/bash
+pip3 install -r requirements.txt'''
       }
     }
 
