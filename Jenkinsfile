@@ -1,11 +1,16 @@
 pipeline {
   agent any
   stages {
-    stage('Requirements') {
-      steps {
-        sh 'pip3 install requirements.txt'
-      }
-    }
+    stage('test') {
+     agent {
+          docker {
+               image 'qnib/pytest'
+          }
+     }
+     steps {
+          sh 'virtualenv venv && . venv/bin/activate && pip install -r requirements.txt'
+     }
+}
 
     stage('Install Hadolint') {
       steps {
