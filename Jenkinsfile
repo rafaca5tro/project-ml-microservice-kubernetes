@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Requirements') {
       steps {
-        sh '''python3 -m venv venv
+        sh '''sudo python3 -m venv venv
 . venv/bin/activate
 make install
 # Install hadolint
