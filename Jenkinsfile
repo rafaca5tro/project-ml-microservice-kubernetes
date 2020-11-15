@@ -3,8 +3,7 @@ pipeline {
   stages {
     stage('Requirements') {
       steps {
-        sh 'FROM jenkins/jenkins:lts-alpine
-        pip3 install requirements.txt'
+        sh 'pip3 install requirements.txt'
       }
     }
 
