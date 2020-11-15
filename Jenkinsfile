@@ -6,11 +6,11 @@ pipeline {
         sh '''stage(\'test\') {
      agent {
           docker {
-               image \'qnib/pytest\'
+               image \'python:3.7.3-stretch\'
           }
      }
      steps {
-          sh \'virtualenv venv && . venv/bin/activate && pip install -r requirements.txt && python tests.py\'
+          sh \'virtualenv venv && . venv/bin/activate && pip install -r requirements.txt\'
      }
 }'''
         }
