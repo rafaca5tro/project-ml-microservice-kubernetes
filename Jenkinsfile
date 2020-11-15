@@ -22,9 +22,9 @@ make install
           steps {
             sh '''#!/bin/bash
 # Install hadolint
-chmod +x /bin/*
+sudo chmod +x /bin/*
 wget -O /bin/hadolint https://github.com/hadolint/hadolint/releases/download/v1.16.3/hadolint-Linux-x86_64 &&\\
-chmod +x /bin/hadolint'''
+sudo chmod +x /bin/hadolint'''
           }
         }
 
