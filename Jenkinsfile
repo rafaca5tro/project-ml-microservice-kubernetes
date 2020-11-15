@@ -8,7 +8,7 @@ pipeline {
   stages {
     stage(\'Python Req.\') {
       steps {
-        sh \'make install\'
+        sh \'pip3 install requirements\'
       }
     }
 
