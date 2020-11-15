@@ -1,18 +1,12 @@
 pipeline {
   agent {
     docker {
-      image 'lts-alpine'
+      image 'qnib/pytest'
     }
 
   }
   stages {
     stage('Requirements') {
-      agent {
-        docker {
-          image 'qnib/pytest'
-        }
-
-      }
       steps {
         sh 'virtualenv venv && . venv/bin/activate && pip install -r requirements.txt'
       }
