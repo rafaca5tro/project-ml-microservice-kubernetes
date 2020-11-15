@@ -20,8 +20,9 @@ make install
       steps {
         sh '''#!/bin/bash
 # Install hadolint
-wget -O /bin/hadolint https://github.com/hadolint/hadolint/releases/download/v1.16.3/hadolint-Linux-x86_64 &&\\
-chmod +x /bin/hadolint'''
+wget https://github.com/hadolint/hadolint/releases/download/v1.16.3/hadolint-Linux-x86_64
+#wget -O /bin/hadolint https://github.com/hadolint/hadolint/releases/download/v1.16.3/hadolint-Linux-x86_64 &&\\
+#chmod +x /bin/hadolint'''
       }
     }
 
