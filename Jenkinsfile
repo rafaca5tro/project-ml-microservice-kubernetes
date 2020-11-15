@@ -3,7 +3,12 @@ pipeline {
   stages {
     stage('Requirements') {
       steps {
-        sh 'pip3 install requirements.txt'
+        sh 'FROM jenkins/jenkins:lts-alpine
+        USER root
+        RUN apk add — no-cache python3 && \
+        python3 -m ensurepip && \
+        pip3 install — upgrade pip setuptools && \
+        pip3 install requirements.txt'
       }
     }
 
