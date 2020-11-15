@@ -1,7 +1,7 @@
 pipeline {
   agent {
     docker {
-      image 'qnib/pytest'
+      image 'python:3.7.3-stretch'
     }
 
   }
