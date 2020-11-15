@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Requirements') {
       steps {
-        sh 'make install'
+        sh 'pip3 install requirements.txt'
       }
     }
 
