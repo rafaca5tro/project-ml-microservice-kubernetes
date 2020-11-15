@@ -3,24 +3,28 @@ pipeline {
   stages {
     stage('Requirements') {
       steps {
-        sh '''sudo python3 -m venv venv
-. venv/bin/activate
-make install
-# Install hadolint
-wget -O /bin/hadolint https://github.com/hadolint/hadolint/releases/download/v1.16.3/hadolint-Linux-x86_64 &&\\
-chmod +x /bin/hadolint'''
+        sh '''stage(\'test\') {
+     agent {
+          docker {
+               image \'qnib/pytest\'
+          }
+     }
+     steps {
+          sh \'virtualenv venv && . venv/bin/activate && pip install -r requirements.txt && python tests.py\'
+     }
+}'''
+        }
       }
-    }
 
-    stage('Lint') {
-      steps {
-        sh 'pylint --disable=W0311 html_generator.py'
+      stage('Lint') {
+        steps {
+          sh 'pylint --disable=W0311 html_generator.py'
+        }
       }
-    }
 
-    stage('Dockerization') {
-      steps {
-        sh '''# Step 1:
+      stage('Dockerization') {
+        steps {
+          sh '''# Step 1:
 # Build image and add a descriptive tag
 docker build --tag=mlapi .
 
@@ -31,12 +35,12 @@ docker image ls
 # Step 3: 
 # Run flask app
 docker run -p 8000:80 mlapi'''
+        }
       }
-    }
 
-    stage('Upload image') {
-      steps {
-        sh '''# Step 1:
+      stage('Upload image') {
+        steps {
+          sh '''# Step 1:
 # Create dockerpath
 # dockerpath=<your docker ID/path>
 dockerpath="vonbolan/mlapi"
@@ -50,12 +54,12 @@ docker login &&\\
 # Step 3:
 # Push image to a docker repository
 docker image push $dockerpath'''
+        }
       }
-    }
 
-    stage('Containerization') {
-      steps {
-        sh '''dockerpath="vonbolan/mlapi"
+      stage('Containerization') {
+        steps {
+          sh '''dockerpath="vonbolan/mlapi"
 
 # Run in Docker Hub container with kubernetes
 #kubectl run \\
@@ -70,8 +74,8 @@ kubectl get pods
 
 # Forward the container port to host
 kubectl port-forward mlmicroservicesapi 8000:80'''
+        }
       }
-    }
 
+    }
   }
-}
