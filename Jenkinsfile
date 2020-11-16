@@ -22,6 +22,7 @@ make install
           steps {
             sh '''#!/bin/bash
 # Run hadolint
+apt get install docker
 docker run --rm -i hadolint/hadolint < Dockerfile'''
           }
         }
