@@ -5,4 +5,11 @@ pipeline {
     }
 
   }
+    stage('Dependencies') {
+      steps {
+        sh 'bash ./lintpython.sh'
+      }
+    }
+
+  }
 }
