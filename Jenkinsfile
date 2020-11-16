@@ -21,10 +21,8 @@ make install
         stage('Install Hadolint') {
           steps {
             sh '''#!/bin/bash
-# Install hadolint
-sudo chmod +x /bin/*
-wget -O /bin/hadolint https://github.com/hadolint/hadolint/releases/download/v1.16.3/hadolint-Linux-x86_64 &&\\
-sudo chmod +x /bin/hadolint'''
+# Run hadolint
+docker run --rm -i hadolint/hadolint < Dockerfile'''
           }
         }
 
