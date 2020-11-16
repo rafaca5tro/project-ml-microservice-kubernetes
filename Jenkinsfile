@@ -12,8 +12,6 @@ pipeline {
 python3 -m venv venv
 . venv/bin/activate
 make install
-sudo apt-get install docker-ce docker-ce-cli containerd.io
-docker run --rm -i hadolint/hadolint < Dockerfile
 '''
       }
     }
