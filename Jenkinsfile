@@ -7,32 +7,20 @@ pipeline {
   }
   stages {
     stage('Requirements') {
-      parallel {
-        stage('Requirements') {
-          steps {
-            sh '''#!/bin/bash
+      steps {
+        sh '''#!/bin/bash
 python3 -m venv venv
 . venv/bin/activate
 make install
 '''
-          }
-        }
-
-        stage('Install Hadolint') {
-          steps {
-            sh '''#!/bin/bash
-# Run hadolint
-apt get install docker
-docker run --rm -i hadolint/hadolint < Dockerfile'''
-          }
-        }
-
       }
     }
 
     stage('Lint') {
       steps {
-        sh '''. venv/bin/activate
+        sh '''wget -O /bin/hadolint https://github.com/hadolint/hadolint/releases/download/v1.16.3/hadolint-Linux-x86_64
+chmod +x /bin/hadolint
+. venv/bin/activate
 make lint'''
       }
     }
