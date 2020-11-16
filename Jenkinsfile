@@ -12,5 +12,11 @@ pipeline {
       }
     }
 
+    stage('Lint') {
+      steps {
+        sh 'bash ./lint.sh'
+      }
+    }
+
   }
 }
