@@ -25,5 +25,17 @@ pipeline {
       }
     }
 
+    stage('Run Docker') {
+      agent {
+        docker {
+          image 'jenkins:1.596'
+        }
+
+      }
+      steps {
+        sh 'bash ./run_docker.sh'
+      }
+    }
+
   }
 }
