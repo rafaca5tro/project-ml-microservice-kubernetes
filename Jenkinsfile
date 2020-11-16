@@ -8,11 +8,8 @@ pipeline {
   stages {
     stage('Dependencies') {
       steps {
-        sh '''#!/bin/bash
-python3 -m venv venv
-. venv/bin/activate
-make install
-'''
+            sh 'bash ./lintpython.sh'
+        }  
       }
     }
 
