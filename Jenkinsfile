@@ -19,8 +19,7 @@ make install
     stage('Lint') {
       steps {
         sh '''. venv/bin/activate 
-hadolintw Dockerfile &&\\
-pylint --disable=R,C,W1203,W1309 app.py '''
+make lint'''
       }
     }
 
