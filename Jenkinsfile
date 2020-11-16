@@ -13,6 +13,15 @@ pipeline {
       }
     }
 
+    stage('PyLint') {
+      agent {
+        docker {
+          image 'python:3.7.3-stretch'
+        }
+      steps {
+        sh 'bash ./lintl.sh'
+      }
+      
     stage('Lint') {
       agent {
         docker {
@@ -20,8 +29,9 @@ pipeline {
         }
 
       }
+
       steps {
-        sh 'bash ./lint.sh'
+        sh 'hadolint Dockerfile'
       }
     }
 
