@@ -35,6 +35,17 @@ pipeline {
       steps {
         sh 'bash ./dockerinstall.sh'
       }
+      
+          stage('Run Kubernetes') {
+      agent {
+        docker {
+          image 'ubuntu:18.04'
+        }
+
+      }
+      steps {
+        sh 'bash ./kubernetes_run.sh'
+      }
     }
 
   }
