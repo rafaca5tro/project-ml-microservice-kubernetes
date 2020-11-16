@@ -28,7 +28,7 @@ pipeline {
     stage('Run Docker') {
       agent {
         docker {
-          image 'jenkins:1.596'
+          image 'jenkins/jenkins:latest'
         }
 
       }
@@ -36,8 +36,6 @@ pipeline {
         sh '''#!/usr/bin/env bash
 
 ## Complete the following steps to get Docker running locally
-
-jenkins/jenkins:latest
 
 
 # Step 1:
