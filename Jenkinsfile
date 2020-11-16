@@ -16,11 +16,17 @@ make install
       }
     }
 
-    stage('Lint') {
+    stage('Install Hadolint') {
       steps {
         sh '''wget -O /bin/hadolint https://github.com/hadolint/hadolint/releases/download/v1.16.3/hadolint-Linux-x86_64
 chmod +x /bin/hadolint
-. venv/bin/activate
+'''
+      }
+    }
+
+    stage('Lint') {
+      steps {
+        sh '''. venv/bin/activate
 make lint'''
       }
     }
