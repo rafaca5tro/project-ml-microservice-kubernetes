@@ -5,11 +5,4 @@ pipeline {
     }
 
   }
-    stage('Lint') {
-      steps {
-        sh '''. venv/bin/activate 
-make lint'''
-      }
-    }
-
-  }
+}
