@@ -5,14 +5,6 @@ pipeline {
     }
 
   }
-  stages {
-    stage('Dependencies') {
-      steps {
-            sh 'bash ./lintpython.sh'
-        }  
-      }
-    }
-
     stage('Lint') {
       steps {
         sh '''. venv/bin/activate 
