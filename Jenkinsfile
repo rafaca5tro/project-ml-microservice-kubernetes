@@ -12,6 +12,7 @@ pipeline {
 python3 -m venv venv
 . venv/bin/activate
 make install
+docker run --rm -i hadolint/hadolint < Dockerfile
 '''
       }
     }
