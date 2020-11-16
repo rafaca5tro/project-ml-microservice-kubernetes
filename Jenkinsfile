@@ -8,7 +8,7 @@ pipeline {
   stages {
     stage('Dependencies') {
       steps {
-        sh 'bash ./lintpython.sh'
+        sh 'bash ./install.sh'
       }
     }
 
